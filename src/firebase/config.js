@@ -3,12 +3,12 @@ import 'firebase/firestore'
 import 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAMXlU9C7_M-gAXtxuJvf-7CDfc7YhNFNw",
-  authDomain: "next-strava-firebase.firebaseapp.com",
-  projectId: "next-strava-firebase",
-  storageBucket: "next-strava-firebase.appspot.com",
-  messagingSenderId: "906046458136",
-  appId: "1:906046458136:web:903738c345a116da88366d"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGE_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 // init firebase

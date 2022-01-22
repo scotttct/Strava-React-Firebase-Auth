@@ -5,7 +5,7 @@
     box-sizing: border-box;
     box-shadow: 0 2px 3px #424242;
     text-align: center;
-    height:60px;
+    height:70px;
     position:absolute;
     bottom:0;
     color: whitesmoke;
@@ -13,4 +13,13 @@
 .main a {
     color:white;
     text-decoration: none;
+}
+.strava {
+ padding-left: 40px;   
+    
+
+}
+.strava img {
+    width:120px;
+    height:auto;
 }
