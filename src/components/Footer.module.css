@@ -1,0 +1,16 @@
+.main {
+    width: 100%;
+    background: #14816f;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 3px #424242;
+    text-align: center;
+    height:60px;
+    position:absolute;
+    bottom:0;
+    color: whitesmoke;
+}
+.main a {
+    color:white;
+    text-decoration: none;
+}

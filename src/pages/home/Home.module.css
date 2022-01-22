@@ -1,0 +1,14 @@
+.main {
+    box-sizing: border-box;
+    background-color: #086858;
+    color: white;
+    text-align: center;
+    align-items: center;
+    padding:20px;
+    width: 75%;
+    margin:auto;
+    margin-top:20px;
+    margin-bottom:20;
+    box-shadow: 0 2px 2px black;
+    
+}
