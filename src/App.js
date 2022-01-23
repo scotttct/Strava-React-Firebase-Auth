@@ -8,7 +8,7 @@ import Signup from './pages/signup/Signup'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import StRedirect from './pages/stRedirect/StRedirect'
-
+import Stats from './pages/stats/Stats'
 function App() {
   const { authIsReady, user } = useAuthContext()
 
@@ -33,6 +33,10 @@ function App() {
             <Route path="/stredirect">
               {!user && <Redirect to="/login" />}
               {user && <StRedirect />}
+            </Route>
+            <Route path="/stats">
+              {!user && <Redirect to="/login" />}
+              {user && <Stats />}
             </Route>
           </Switch>
           <Footer />

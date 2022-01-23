@@ -1,0 +1,7 @@
+ToDo:
+1. create a function to post to strava to get an access token with saved code
+2. create a function to get the login strava users profile and set it to a users collection inside firestore
+3. create a page to display profile data from strava
+4. create a function to get users stats
+5. create a function to get users activity data
+6. create a firestore collection for user that creates goals
