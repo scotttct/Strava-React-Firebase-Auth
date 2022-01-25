@@ -6,9 +6,11 @@
     box-shadow: 0 2px 3px #424242;
     text-align: center;
     height:70px;
-    position:absolute;
+    /* position:absolute; */
     bottom:0;
     color: whitesmoke;
+    flex-shrink: 0;
+    margin-top: 40px;
 }
 .main a {
     color:white;
