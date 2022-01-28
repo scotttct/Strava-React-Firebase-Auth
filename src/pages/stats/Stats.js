@@ -1,51 +1,57 @@
 import React from 'react';
-//import { useFetch } from '../../hooks/useFetch';
+
 import { useDocument } from '../../hooks/useDocument';
-import { Strava } from 'strava'
+import {useFetch} from '../../hooks/useFetch'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
-import './Stats.module.css'
+import styles from'./Stats.module.css'
 export default function Stats() {
+  
+ 
     const { user } = useAuthContext()
-    // const { data, err } = useFetch()
     const id = user.uid
     const email = user.email
-
-    const {error, document} = useDocument("stravaCode", id)
-
-    const strava = new Strava({
-        client_id: process.env.REACT_APP_STRAVA_CLIENT_ID,
-        client_secret: process.env.REACT_APP_STRAVA_CLIENT_SECRET,
-        refresh_token: process.env.REACT_APP_STRAVA_REFRESH_TOKEN,
-      })
-      ;(async () => {
-        try {
-          const activities = await strava.activities.getLoggedInAthleteActivities()
-          console.log(activities)
-        } catch (error) {
-          console.log(error)
-        }
-      })()
-
-    if (error) {
-        return <div className='error'>{error.message}</div>
-    }
-    if (!document) {
-        return <div className="loading"><img className="loadingImg" src="./loading.gif" alt="Loading..."/></div>
-    }
-
-      return (
-         <> 
-            <div className="container">
-                <div>
-                    <h2>{email}</h2>
-                    <p>with userId of: {id}</p>
-                    <p>code for user = {document.code}</p>
-                   <div><img className="loadingImg" src="./loading.gif" alt="loading"></img></div> 
-                   <div><h2>Strava Acitivities</h2></div>
-                </div>
-            </div>
-        </>
-      )
   
+    const {document, error} = useDocument("stravaCode", id)
+      
+      //const client_secret = document.client_secret
+      
+      //const refresh_token = document.refresh_token
+    console.log(document)
+      
+      const accessToken = document.access_token
+     
+      const strUserId = document.stravaUserId
+
+      const strUsername = document.stravaUsername
+      //})
+      //const auth_link = "https://www.strava.com/oauth/token"
+      //const activities_link = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}`
+      const stat_link = `https://www.strava.com/api/v3/athlete/${strUserId}/stats?access_token=${accessToken}`
+     
+      const {data, isPending, err} = useFetch(stat_link)
+      console.log(data)
+    
+      return (
+        <>
+        {error && <p className={styles['error']}>{error.message}</p>}
+        {isPending  && <div><img className={styles['loadingImg']} src="./loading.gif" alt="loading"></img></div> }
+        {data && <div className="container">
+                <div>
+                  <h3>Strava Stats</h3>
+                    <div className={styles['card']} >
+                     
+                      <div className={styles['card-container']}>
+                        
+                        <h4><b>Welcome{strUsername}</b></h4> 
+                         <h5>with Email: {email}</h5>
+                        
+                      </div>
+
+                   </div>
+                   
+                </div>
+           </div>           
+        }
+         </>)
 }
