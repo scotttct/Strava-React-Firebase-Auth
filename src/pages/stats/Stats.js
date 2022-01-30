@@ -10,7 +10,7 @@ export default function Stats() {
  
     const { user } = useAuthContext()
     const id = user.uid
-    //const email = user.email
+    const email = user.email
   
     const {document, error} = useDocument("stravaCode", id)
       
@@ -25,7 +25,7 @@ export default function Stats() {
      
       // const strUserId = document.stravaUserId
 
-      // const strUsername = document.stravaUsername
+     //const strUsername = document.stravaUsername
       //})
       //const auth_link = "https://www.strava.com/oauth/token"
       //const activities_link = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}`
@@ -37,17 +37,17 @@ export default function Stats() {
       return (
         <>
         {error && <p className={styles['error']}>{error.message}</p>}
-        {/* {err && <p className={styles['error']}>{err.message}</p>}
+        {/* {err && <p className={styles['error']}>{err.message}</p>}*/}
 
-        {isPending  && <div><img className={styles['loadingImg']} src="./loading.gif" alt="loading"></img></div> }
-        {data && <div className="container">
+        {/* {isPending  && <div><img className={styles['loadingImg']} src="./loading.gif" alt="loading"></img></div> }
+        {data && <div className="container"> */}
                 <div>
-                  <h3>Strava Stats</h3>
+                  
                     <div className={styles['card']} >
-                     
+                     <h3>Strava Stats</h3>
                       <div className={styles['card-container']}>
                         
-                        <h4><b>Welcome{strUsername}</b></h4> 
+                        {/* <h4><b>Welcome{strUsername}</b></h4>  */}
                          <h5>with Email: {email}</h5>
                         
                       </div>
@@ -55,7 +55,7 @@ export default function Stats() {
                    </div>
                    
                 </div>
-           </div>           
-        } */}
+           {/* </div>            */}
+        {/* }  */}
          </>)
 }
