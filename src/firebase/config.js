@@ -1,14 +1,15 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
+import 'firebase/storage'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA4mChiorfJJb18C8JDZ7cf6-KVSz65Q8I",
-  authDomain: "stauthnew.firebaseapp.com",
-  projectId: "stauthnew",
-  storageBucket: "stauthnew.appspot.com",
-  messagingSenderId: "609754180974",
-  appId: "1:609754180974:web:9dba785d08e6325673a57f"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGE_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 // init firebase
@@ -17,6 +18,7 @@ const firebaseConfig = {
 // init services
 const projectFirestore = firebase.firestore()
 const projectAuth = firebase.auth()
+const projectStorage = firebase.storage()
 const timestamp = firebase.firestore.Timestamp
 
-export { projectFirestore, projectAuth, timestamp }
+export { projectFirestore, projectAuth, projectStorage, timestamp }
