@@ -36,6 +36,11 @@ ul {
   width: 100px;
   height: auto;
 }
+.profilePic {
+  display: inline-block;
+  width: 200px;
+  height: auto;
+}
 .container {
   background-color: #1f978d;
   color: whitesmoke;
