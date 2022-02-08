@@ -53,3 +53,8 @@ ul {
   flex: 1 0 auto;
   width:fit-content;
 }
+
+.error {
+  color: red;
+  align-content: center;
+}

@@ -3,7 +3,7 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import { projectFirestore } from '../../firebase/config';
 import axios from 'axios'
 //import { useFetch } from '../../hooks/useFetch'
-//import { useHistory } from 'react-router'
+import { useHistory } from 'react-router'
 import { useLocation } from "react-router-dom";
 //import { StravaAuth } from "../../utils/functions"
 //css for StRedirect
@@ -15,7 +15,7 @@ export default function StRedirect() {
   const { user } = useAuthContext()
   const search = useLocation().search; 
 
-  //const history = useHistory()
+  const history = useHistory()
   const code = new URLSearchParams(search).get('code');
   //const email = user.email
   const id = user.uid
@@ -37,26 +37,28 @@ export default function StRedirect() {
         // const statsRes = await axios.get(`${statUrl}/${res[0].data.athlete.id}/stats?access_token=${res[0].data.access_token}`)
         // console.log(statsRes)
 
-        console.log(res);
+       
         const strUser = res.data.athlete.username
         const strUserId = res.data.athlete.id
         const access_token = res.data.access_token
         const refresh_token = res.data.refresh_token
         const fullName = res.data.athlete.firstname + " " + res.data.athlete.lastname
         const picUrl = res.data.athlete.profile
-        console.log(picUrl)
-       console.log(fullName)
+        
 
         const athleteUrl  = `${statUrl}?access_token=${access_token}`
         console.log(athleteUrl)
         const athlete = await axios.get(athleteUrl)
-          console.log(athlete)
+         
           const bikes = athlete.data.bikes
           // console.log(bikes)
 
         const actUrl = `https://www.strava.com/api/v3/athlete/activities?access_token=${access_token}`
         const act = await axios.get(actUrl)
-        console.log(act)
+       
+
+        const statsUrl = `https://www.strava.com/api/v3/athletes/${strUserId}/stats?access_token=${access_token}`
+        const stats = await axios.get(statsUrl)
 
         codeRef.update({ 
           stravaUsername: strUser,
@@ -66,13 +68,14 @@ export default function StRedirect() {
           fullName,
           picUrl,
           bikes: bikes,
-          act: act.data
+          act: act.data,
+          stats: stats.data
         })
         
         //console.log("access_token = " + access_token, "refresh_token = " + refresh_token)
       
       } catch (error) {
-        console.error(error);
+        
       }
     }
    getTokens()
@@ -80,7 +83,7 @@ export default function StRedirect() {
         
  }, [clientId, stravaSecret, code, codeRef, statUrl ])//history
   
-//history.push('/stats')
+history.push('/strava')
   return <>
   <div className="container">
     <div><img className="loadingImg" src="./loading.gif" alt="loading"></img></div>

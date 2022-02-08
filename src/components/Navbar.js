@@ -13,8 +13,13 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <ul>
         <li className={styles.title}>
-        {user && <Link to="/">T-Site</Link>}</li>
-        
+        {user && <Link to="/">St-Activities</Link>}</li>
+        {user && (
+          <>
+            <li className={styles.mainNav}><Link to="/Strava">Strava Home</Link></li>
+            <li className={styles.mainNav}><Link to="/Goals">Goals</Link></li>
+          </>
+        )}
         {!user && (
           <>
             <li><Link to="/login">Login</Link></li>

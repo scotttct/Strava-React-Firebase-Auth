@@ -26,7 +26,11 @@
 .navbar a {
   color: whitesmoke;
   text-decoration: none;
+  align-content: space-between;
 }
 .hello {
   color:whitesmoke;
+}
+.mainNav {
+  margin-right: 30px;
 }

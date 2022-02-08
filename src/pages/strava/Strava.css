@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+.col1 {
+    float: left;
+    padding: 20px;
+    height:max-content;
+}
+
+.left {
+   width: 25%;
+   background-color: #1f978d;
+}
+
+.middle {
+    width: 25%;
+    background-color: #80a5a1;
+}
+.right {
+    width: 50%;
+    background-color: lightgrey;
+}
+
+.row1:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+h1 {
+    padding-left: 10rem;
+    padding-right: 10rem;
+    
+}
+.pSpan {
+    font-weight:700;
+}
+
+.table1 {
+    width: 100%;
+
+}
+.table1 th {
+    background-color: #1f978d;
+    color: whitesmoke;
+}
+.table1 td {
+    background-color: #80a5a1;
+    color: whitesmoke;
+    padding-left: 5px;
+}
+.pDiv {
+    display:Flex;
+    padding-right:5px;
+}
+
+.h3Profile {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.activity-list {
+    margin-top: 20px;
+    display: flex;
+    
+   
+  }
+  .activity-list a {
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 6px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: inherit;
+  }
+  .activity-list h4 {
+    font-size: 0.9em;
+    color: var(--heading-color);
+  }
+  .activity-list p {
+    color: var(--text-color);
+    font-size: 0.9em;
+    padding: 20px;
+  }
+  .act-div p {
+      background-color:  #1f978d;
+      color: white;
+
+  }
+  .act-div span {
+    padding: 12px;
+  }
