@@ -1,0 +1,13 @@
+label {
+    margin: 10px;
+}
+span {
+    margin-right: 5px;
+}
+.tleft {
+    text-align: left ;
+}
+.tright {
+    text-align:right;
+    padding: 10px;
+}

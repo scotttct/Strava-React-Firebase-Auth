@@ -34,3 +34,10 @@
 .mainNav {
   margin-right: 30px;
 }
+.logo {
+  margin-right: 5px;
+}
+.hbrand {
+  display: flex;
+  margin-right: 100px;
+}

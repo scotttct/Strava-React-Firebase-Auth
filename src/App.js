@@ -8,8 +8,9 @@ import Signup from './pages/signup/Signup'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import StRedirect from './pages/stRedirect/StRedirect'
-import ActivityDetails from './pages/activities/ActivityDetails'
+import Activities from './pages/activities/Activities'
 import Strava from './pages/strava/Strava'
+import Goals from './pages/goals/Goals'
 function App() {
   const { authIsReady, user } = useAuthContext()
 
@@ -39,9 +40,13 @@ function App() {
               {!user && <Redirect to="/login" />}
               {user && <Strava />}
             </Route>
-            <Route path="/activityDetails">
+            <Route path="/activities">
               {!user && <Redirect to="/login" />}
-              {user && <ActivityDetails  />}
+              {user && <Activities  />}
+            </Route>
+            <Route path="/goals">
+              {!user && <Redirect to="/login" />}
+              {user && <Goals  />}
             </Route>
           </Switch>
           <Footer />
