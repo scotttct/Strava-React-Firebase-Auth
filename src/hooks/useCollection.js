@@ -22,12 +22,14 @@ export const useCollection = (collection, _query, _orderBy) => {
 
     const unsubscribe = ref.onSnapshot(snapshot => {
       let results = []
-      snapshot.docs.forEach(doc => {
+      snapshot.forEach(doc => {
+        console.log(doc)
         results.push({...doc.data(), id: doc.id})
       });
-      
+      console.log(results)
       // update state
       setDocuments(results)
+      
       setError(null)
     }, error => {
       console.log(error)
@@ -39,5 +41,5 @@ export const useCollection = (collection, _query, _orderBy) => {
 
   }, [collection, query, orderBy])
 
-  return { documents, error }
+  return { documents, error}
 }

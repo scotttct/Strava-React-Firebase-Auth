@@ -11,6 +11,7 @@ import StRedirect from './pages/stRedirect/StRedirect'
 import Activities from './pages/activities/Activities'
 import Strava from './pages/strava/Strava'
 import Goals from './pages/goals/Goals'
+import GoalDetails from './pages/goals/GoalDetails'
 function App() {
   const { authIsReady, user } = useAuthContext()
 
@@ -48,6 +49,10 @@ function App() {
               {!user && <Redirect to="/login" />}
               {user && <Goals  />}
             </Route>
+            <Route path="/goaldetails/:id">
+                {!user && <Redirect to="/login" />}
+                {user && <GoalDetails />}
+              </Route>
           </Switch>
           <Footer />
         </BrowserRouter>

@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useAuthContext } from '../../hooks/useAuthContext'
+import { useFirestore } from '../../hooks/useFirestore'
 
 export default function GoalsForm() {
   const [name, setName] = useState('')
   const [goalAmount, setGoalAmount] = useState('')
   const [goalType, setGoalType] = useState('')
   const [goalSuffix, setGoalSuffix] = useState('')
+  const { user } = useAuthContext()
+  const id = user.uid 
+  const { addDocument, response  } = useFirestore('goals')
   
   const timeElapsed = Date.now()
   const today = new Date(timeElapsed).toDateString()
@@ -18,7 +23,8 @@ export default function GoalsForm() {
 //   console.log(endDate)
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ 
+    addDocument({ 
+      uid: id, 
       name, 
       goalAmount,
       goalType,
@@ -27,7 +33,15 @@ export default function GoalsForm() {
       goalDate,  
     })
   }
-
+ // reset the form fields
+ useEffect(() => {
+  if (response.success) {
+    setName('')
+    setGoalAmount('')
+    setGoalType('')
+    setGoalSuffix('')
+  }
+}, [response.success])
   return (
     <>
     
@@ -37,6 +51,7 @@ export default function GoalsForm() {
         <label> 
           <span>Goal Name:</span>
           <input 
+            
             type="text"
             required
             onChange={(e) => setName(e.target.value)} 
@@ -47,6 +62,7 @@ export default function GoalsForm() {
         <label>
           <span>Goal Type:</span>
         <select name="goalType" id="goalType" required onChange={(e) => setGoalType(e.target.value)} value={goalType}>
+          <option value="">---Choose---</option>
             <option value="time">Time</option>
             <option value="speed">speed</option>
             <option value="watts">Watts</option>
@@ -60,6 +76,8 @@ export default function GoalsForm() {
         <label>
           <span>Goal Amount:</span>
           <input
+            min="1"
+            max="1000"
             type="number"
             required
             onChange={(e) => setGoalAmount(e.target.value)} 
@@ -70,8 +88,9 @@ export default function GoalsForm() {
         <label>
           <span>Goal Suffix:</span>
         <select name="goalSuffix" id="goalSuffix" required onChange={(e) => setGoalSuffix(e.target.value)} value={goalSuffix}>
+            <option value="">---Choose---</option>
             <option value="minutes">Minutes</option>
-            <option value="avgSpeed">Avg Speed</option>
+            <option value="avgMPH">Avg Speed</option>
             <option value="avgWatts">Avg Watts</option>
             <option value="avgHR">Avg Heart Rate</option>
             <option value="lbs">Pounds</option>

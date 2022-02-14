@@ -40,7 +40,7 @@ function ActivitiesList(props) {
           {document && 
           document.act.slice(0,30).map(activity => (
            
-                      <tr key={document.id}>
+                      <tr key={activity.id}>
                       
                          <td>{activity.name}</td>
                          <td>{ activity.start_date}</td>

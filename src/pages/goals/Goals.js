@@ -2,13 +2,20 @@ import React from 'react'
 import GoalsForm  from './GoalsForm'
 
 import './Goals.css'
+import { StStats } from '../../components/StStats'
+import { GoalsList } from './GoalsList'
 
 export default function Goals() {
   return (
-    <div class="row">
+    <div className="row ml-20">
+    
     <div className="col">
-        There will be a goals list here
+      <StStats />
     </div>
+    <div className="col">
+        <GoalsList />
+    </div>
+    
     <div className="col">
         <GoalsForm />
     </div>

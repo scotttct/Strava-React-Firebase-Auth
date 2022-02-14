@@ -85,9 +85,9 @@ export default function Strava() {
             
                 stData.act.slice(0,6).map(activity => (
                       
-                        <div className="activity-list">
+                        <div className="activity-list" key={activity.id}>
                             <p>{activity.name}</p>
-                            <p>{ activity.start_date }</p>
+                            <p>{ activity.start_date}</p>
                             <p>{activity.average_watts}</p>
                             <p>{activity.average_speed}</p>
                             <p>{activity.average_heartrate}</p>
