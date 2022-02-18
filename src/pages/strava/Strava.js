@@ -1,5 +1,5 @@
 import React from 'react';
-//mport { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useDocument } from '../../hooks/useDocument'
 //import ActivitiesList from '../../components/ActivitiesList'
@@ -45,7 +45,7 @@ export default function Strava() {
            
                 {stData.bikes && 
                 stData.bikes.map(bike => (
-                    <p>{bike.name}</p>
+                    <p key={bike.name}>{bike.name}</p>
                 ))}
             
         </div>
@@ -74,20 +74,20 @@ export default function Strava() {
         </div>
         <div className="col col1 right">
             <div className="act-header">
-                <h3>Recent Strava Activities - Last 5</h3> <button className="btn" >All Activities</button>
+                <h3>Recent Strava Activities - Last 5</h3> <Link to={`/activities`}><button className="btn">All Activities</button></Link>
             </div>
 
             <hr/>
             <div className="act-div">
-            <p><span>Name</span><span> | </span><span>Date</span><span> | </span><span>AvgWatts</span><span> | </span><span>AvgSpeed</span><span> | </span><span>AvgHR</span></p>
+            <p><span>Name</span><span>|</span><span>Date</span><span>|</span><span>AvgWatts</span><span>|</span><span>AvgSpeed</span><span> | </span><span>AvgHR</span></p>
             </div>
             {stData.act && 
             
-                stData.act.slice(0,6).map(activity => (
+                stData.act.slice(0,5).map(activity => (
                       
                         <div className="activity-list" key={activity.id}>
                             <p>{activity.name}</p>
-                            <p>{ activity.start_date}</p>
+                            <p>{ activity.start_date }</p>
                             <p>{activity.average_watts}</p>
                             <p>{activity.average_speed}</p>
                             <p>{activity.average_heartrate}</p>

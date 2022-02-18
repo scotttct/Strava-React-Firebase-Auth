@@ -5,6 +5,7 @@ import { useDocument } from '../../hooks/useDocument'
 import './Goals.css'
 
 import GoalSummary from "./GoalSummary"
+import GoalChart from './GoalChart'
 
 export default function Project() {
   const { id } = useParams()
@@ -17,16 +18,18 @@ export default function Project() {
   if (!document) {
     return <div className="loading">Loading...</div>
   }
-  
-    //   const createdAt= new Date(document.createdAt)
-    //   createdAt.toLocaleDateString('en-US'); // "en-US" gives date in US Format - mm/dd/yy
-      
 
-  return (
-    
-        <div className="dcontainer">
-            <GoalSummary goal={document} />
-           
+return (
+      <div className="dcontainer">
+        <div className="row  ">
+            <div className="col ">
+              <GoalSummary goal={document} />
+            </div>
+            <hr className="mt-40"/>
+            <div className="col ">
+              <GoalChart goal={document} />
+            </div>
+          </div>
         </div>
    
   )
