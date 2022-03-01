@@ -9,11 +9,17 @@ import './Strava.css'
 
 export default function Strava() {
     //let history = useHistory()
+    
     const { user } = useAuthContext()
-    const id = user.uid 
-
+        const id = user.uid
+       
     const {document, error} = useDocument("stravaCode", id)
     const stData = document
+
+    
+  
+
+    
 
     // const goToAct = () => {
     //     history.push('/Activities')
@@ -21,6 +27,7 @@ export default function Strava() {
 
   return <>
    {error && <p className='error'>{error.message}</p>}
+ 
    {stData && <>
   <div className="container c1">
     <div className="row">
@@ -49,10 +56,11 @@ export default function Strava() {
                 ))}
             
         </div>
-        <div className="col col1 middle">
+        {stData && <><div className="col col1 middle">
             <h2>Strava Ride Stats</h2>
             <hr/>
             <h4>Recent Ride Totals(RR)</h4>
+             
             <p><span className="pSpan">RR Count: </span>{stData.stats.recent_ride_totals.count}</p>
             <p><span className="pSpan">RR Distance: </span>{parseFloat(stData.stats.recent_ride_totals.distance * 0.000621371).toFixed(2)} miles</p>
             <p><span className="pSpan">RR Moving Time: </span>{parseFloat(stData.stats.recent_ride_totals.moving_time * 0.000277778).toFixed(2)} hours</p>
@@ -69,9 +77,8 @@ export default function Strava() {
             <p><span className="pSpan">AR Moving Time: </span>{parseFloat(stData.stats.all_ride_totals.moving_time * 0.000277778).toFixed(2)} hours</p>
             <p><span className="pSpan">AR Longest Ride TD: </span>{parseFloat(stData.stats.biggest_ride_distance * 0.000621371).toFixed(2)} miles</p>
             <p><span className="pSpan">AR Longest Climb TD: </span>{parseFloat(stData.stats.biggest_climb_elevation_gain * 0.000621371).toFixed(2)} miles</p>
-            {/* <p><span className="pSpan">Avg Watts: </span> avgWatts</p>
-            <p><span className="pSpan">Avg Distance: </span> avgDistance</p> */}
-        </div>
+        
+        </div></>}
         <div className="col col1 right">
             <div className="act-header">
                 <h3>Recent Strava Activities - Last 5</h3> <Link to={`/activities`}><button className="btn">All Activities</button></Link>
